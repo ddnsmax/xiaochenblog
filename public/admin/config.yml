@@ -1,7 +1,7 @@
 backend:
   name: github
   branch: main # change this to your branch
-  repo: ddnspro/xiaochenblog # 1、change this to your repo
+  repo: ddnsmax/xiaochenblog # 1、change this to your repo
   site_domain: blog.wo29.com # 2、change this to your domain
   base_url: https://blog.wo29.com # 3、change this to your prod URL
   auth_endpoint: oauth # the oauth route provided by the integration
