@@ -1,0 +1,34 @@
+---
+title: 群晖NAS搭建WordPress博客
+author: Hexo博客
+date: 2025-08-28 05:56:25
+tags:
+---
+<div style="position: relative; padding-top: 56.25%; margin: 20px 0; border-radius: 8px; overflow: hidden; background: #000;">
+<iframe
+  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+  src="https://player.bilibili.com/player.html?bvid=BV1LStNzaEvA&page=1&autoplay=0&high_quality=1"
+  scrolling="no"
+  frameborder="no"
+  allowfullscreen>
+</iframe>
+</div>
+
+
+使用过 wordpress 的站长应该都清楚，wordpress 在安装的时候会默认绑定当前的域名，后续绑定其他的域名但是页面的链接也还是安装时候的域名。那么今天给大家分享一下 wordpress 绑定多个域名或者取消域名绑定限制的方法。
+
+1、打开网站根目录下的 wp-config.php，在 `define('WP_DEBUG', false);` 后面添加下面内容：
+
+```
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+define( 'WP_CONTENT_URL',  '//' . $_SERVER['HTTP_HOST'] . '/wp-content');
+```
+
+2、群晖部署的输入下面代码才有删除、读取权限，放底部就行。
+
+```
+define("FS_METHOD", "direct");
+define("FS_CHMOD_DIR", 0777); 
+define("FS_CHMOD_FILE", 0777);
+```
